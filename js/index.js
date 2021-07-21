@@ -35,56 +35,68 @@ const colorGenerator = () => {
 
 // create function that generates 6 random colours - colours in variables that can be passed into the boxes from an array
 
-// new array, choose between random index to go into header
-
 const startGame = () => {
   // Assigning Random Colors to boxes and one matching to Header..
-  let colorOne = colorGenerator();
-  let colorTwo = colorGenerator();
-  let colorThree = colorGenerator();
-  let colorFour = colorGenerator();
-  let colorFive = colorGenerator();
-  let colorSix = colorGenerator();
 
-  let colorArr = [colorOne, colorTwo, colorThree, colorFive, colorSix];
+  //? Original longer code to assign random colors..
+
+  //   let colorOne = colorGenerator();
+  //   let colorTwo = colorGenerator();
+  //   let colorThree = colorGenerator();
+  //   let colorFour = colorGenerator();
+  //   let colorFive = colorGenerator();
+  //   let colorSix = colorGenerator();
+
+  //   let colorArr = [colorOne, colorTwo, colorThree, colorFive, colorSix];
+
+  //   let index = Math.floor(Math.random() * colorArr.length);
+  //   let matchingColor = colorArr[index];
+
+  //   boxOne.style.backgroundColor = colorOne;
+  //   boxTwo.style.backgroundColor = colorTwo;
+  //   boxThree.style.backgroundColor = colorThree;
+  //   boxFour.style.backgroundColor = colorFour;
+  //   boxFive.style.backgroundColor = colorFive;
+  //   boxSix.style.backgroundColor = colorSix;
+
+  // =========
+  //? Shortened code to assign random colors..
+
+  let colorArr = [
+    colorGenerator(),
+    colorGenerator(),
+    colorGenerator(),
+    colorGenerator(),
+    colorGenerator(),
+    colorGenerator(),
+  ];
 
   let index = Math.floor(Math.random() * colorArr.length);
   let matchingColor = colorArr[index];
 
-  boxOne.style.backgroundColor = colorOne;
-  boxTwo.style.backgroundColor = colorTwo;
-  boxThree.style.backgroundColor = colorThree;
-  boxFour.style.backgroundColor = colorFour;
-  boxFive.style.backgroundColor = colorFive;
-  boxSix.style.backgroundColor = colorSix;
+  for (let i = 0; i < colorBoxButtons.length; i++) {
+    colorBoxButtons[i].style.backgroundColor = colorArr[i];
+  }
 
-  //! for testing
-  console.log(colorOne);
-  console.log(colorTwo);
-  console.log(colorThree);
-  console.log(colorFour);
-  console.log(colorFive);
-  console.log(colorSix);
-
+  // Result and heading with result RGB number
   randomNumberHeading.textContent = matchingColor;
   let result = matchingColor.replace(/,/g, ", ");
 
-  // End of Assigning Random Colors to boxes and one matching to Header..
-  // =======
-  // Clicking on boxes...
-  const nowGuess = (event) => {
-    // alert(`You clicked on ${event.target.id}`);
-    // console.log(event);
-    // console.log(event.target);
-    // event.stopPropagation();
+  //? How to create space again..
+  //   result = matchingColor.replaceAll(" ", "");
+  //   result = matchingColor.replace(/", "/g, ",");
 
+  // =======
+  // Nested guessing function
+
+  const nowGuess = (event) => {
     if (event.target.style.backgroundColor == result) {
       alert("You did it! You guessed right!!");
     }
     //! for testing
-    console.log(`You clicked on ${event.target.id}`);
-    console.log(event.target.style.backgroundColor);
-    console.log(result);
+    // console.log(`You clicked on ${event.target.id}`);
+    // console.log(event.target.style.backgroundColor);
+    // console.log(result);
 
     // console.log(event.target.style.backgroundColor);
     // console.log(matchingColor);
@@ -93,14 +105,11 @@ const startGame = () => {
     // console.log(result);
   };
 
+  // Event listener to Guess
   colorBoxButtons.forEach((button) => {
     button.addEventListener("click", nowGuess);
   });
-
-  //   console.log(colorBoxButtons);
-
-  // End of clicking on Boxes
-  // =======
 };
 
+// Event Listener to start the game
 startButton.addEventListener("click", startGame);
