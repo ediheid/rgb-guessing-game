@@ -5,8 +5,7 @@ import * as allVariables from "./variables.js";
 
 // ===========================================================
 
-// ? Game Function
-export const startGame = () => {
+const startGame = () => {
   // Random color array
   let colorArr = [
     colorGenerator(),
@@ -45,3 +44,5 @@ export const startGame = () => {
     button.addEventListener("click", nowGuess);
   });
 };
+
+export default startGame;

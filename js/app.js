@@ -6,7 +6,7 @@
 import { startButton } from "./variables.js";
 
 // Game Function
-import { startGame } from "./gameFunction.js";
+import startGame from "./gameFunction.js";
 // ===========================================================
 
 //? Event Listener to start the game
